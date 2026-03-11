@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.example.mysecondapp;
 
 import android.os.Bundle;
 
@@ -8,28 +8,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements BlankFragment.OnTextCopiedListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-    @Override
-    public void onTextCopied(String text) {
-        BlankFragment2 fragment2 = (BlankFragment2) getSupportFragmentManager()
-                .findFragmentById(R.id.main2);
-
-        if (fragment2 != null) {
-            fragment2.scaner(text);
-        }
     }
 }
